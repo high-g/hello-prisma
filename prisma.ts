@@ -3,40 +3,16 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  // const user = await prisma.user.create({
-  //   data: {
-  //     name: 'Alice',
-  //     email: 'alice@prisma.io',
-  //   },
-  // })
-  // console.log(user)
-
-  // const user = await prisma.user.findMany()
-  // console.log(user)
-
-  // const user = await prisma.user.create({
-  //   data: {
-  //     name: 'Bob',
-  //     email: 'bob@prisma.io',
-  //     posts: {
-  //       create: {
-  //         title: 'Hello World',
-  //       },
-  //     },
-  //   },
-  // })
-
-  // console.log(user)
-
-  const result = await prisma.user.findMany()
-  console.log('result', result)
-
-  const result2 = await prisma.user.findMany({
-    include: {
-      posts: true,
+  const create_user = await prisma.user.create({
+    data: {
+      name: 'Alice',
+      email: 'alice@prisma.io',
     },
   })
-  console.dir(result2, { depth: null })
+  console.log(create_user)
+
+  const find_user = await prisma.user.findMany()
+  console.log(find_user)
 }
 
 main()
